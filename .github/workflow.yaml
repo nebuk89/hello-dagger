@@ -1,0 +1,19 @@
+name: dagger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v3
+      -
+        name: Dagger
+        uses: dagger/dagger-for-github@v4
+        with:
+          cmds: dagger run node ci/index.mjs
