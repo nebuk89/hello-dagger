@@ -13,7 +13,15 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       -
+        name: Login to ghcr
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.ghcr_TOKEN }}
+      -
         name: Dagger
         uses: dagger/dagger-for-github@v4
         with:
-          cmds: dagger run node ci/index.mjs
+          cmds: run node ci/index.mjs
