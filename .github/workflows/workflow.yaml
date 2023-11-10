@@ -24,4 +24,4 @@ jobs:
         run: cd /usr/local && { curl -L https://dl.dagger.io/dagger/install.sh | sh; cd -; }
       - 
         name: Run Dagger build and deploy
-        run: dagger run node ci/index.mks
+        run: dagger run node ci/index.mjs
