@@ -20,7 +20,8 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
-        name: Dagger
-        uses: dagger/dagger-for-github@v4
-        with:
-          cmds: run node ci/index.mjs
+        name: Install Dagger
+        run: cd /usr/local && { curl -L https://dl.dagger.io/dagger/install.sh | sh; cd -; }
+      - 
+        name: Run Dagger build and deploy
+        run: dagger run node ci/index.mks
