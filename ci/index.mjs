@@ -30,7 +30,7 @@ connect(async (client) => {
   const imageRef = await client.container()
     .from("nginx:1.23-alpine")
     .withDirectory('/usr/share/nginx/html', buildDir)
-    .publish('ghcr.io/nebuk89/hellodagger-' + Math.floor(Math.random() * 10000000))
+    .publish('bengotch/hellodagger-' + Math.floor(Math.random() * 10000000))
    console.log(`Published image to: ${imageRef}`)
 
 
